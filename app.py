@@ -9,7 +9,6 @@ OMDB_API_KEY = "d9368fe7"
 mongodb_uri = "mongodb+srv://vania:yusuf123@ac-eg8bint-shard-00-00.jpxaltc.mongodb.net/?ssl=true&replicaSet=atlas-blamiy-shard-0&authSource=admin&appName=Cluster0"
 
 client = MongoClient(mongodb_uri, tlsAllowInvalidCertificates=True, serverSelectionTimeoutMS=5000)
-client = MongoClient(mongodb_uri)
 db = client.dbvania
 collection = db.movies
 
