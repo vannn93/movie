@@ -3,7 +3,6 @@ from pymongo import MongoClient
 import requests
 import re
 
-
 OMDB_API_KEY = "d9368fe7"
 
 mongodb_uri = "mongodb+srv://vania:yusuf123@ac-eg8bint-shard-00-00.jpxaltc.mongodb.net/?ssl=true&replicaSet=atlas-blamiy-shard-0&authSource=admin&appName=Cluster0"
@@ -51,7 +50,6 @@ def movie_post():
     star_receive = request.form['star_give']
     comment_receive = request.form['comment_give']
     
-    # Validasi rating
     try:
         star = float(star_receive)
         if star < 1 or star > 5:
@@ -59,7 +57,6 @@ def movie_post():
     except:
         return jsonify({'msg': 'Rating tidak valid'}), 400
     
-    # Ambil info film dari OMDB
     movie_info, error = get_movie_info(url_receive)
     
     if error:
@@ -84,10 +81,7 @@ def movie_post():
 def movie_get():
     try:
         movies = list(collection.find({}, {'_id': False}))
-        
-        # Filter out data yang tidak valid
         valid_movies = [m for m in movies if m.get('title') and m.get('title') != 'Movie Not Found']
-        
         return jsonify({'movies': valid_movies})
     except Exception as e:
         return jsonify({'movies': [], 'msg': str(e)}), 500
@@ -98,9 +92,4 @@ def delete_all():
     return jsonify({'msg': f'Menghapus {result.deleted_count} data'})
 
 if __name__ == '__main__':
-    print("=" * 50)
-    print("🎬 SERVER STARTED")
-    print(f"📡 OMDB API Key: {OMDB_API_KEY[:5]}...")
-    print("🌐 Buka: http://localhost:5000")
-    print("=" * 50)
-    app.run('0.0.0.0', port=5500, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
