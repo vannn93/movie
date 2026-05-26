@@ -6,7 +6,7 @@ import re
 
 OMDB_API_KEY = "d9368fe7"
 
-mongodb_uri = "mongodb+srv://vania:yusuf123@ac-eg8bint-shard-00-00.jpxaltc.mongodb.net/?ssl=true&replicaSet=atlas-blamiy-shard-0&authSource=admin&appName=Cluster0"
+mongodb_uri = "mongodb://vania:yusuf123@ac-eg8bint-shard-00-00.jpxaltc.mongodb.net:27017,ac-eg8bint-shard-00-01.jpxaltc.mongodb.net:27017,ac-eg8bint-shard-00-02.jpxaltc.mongodb.net:27017/?ssl=true&replicaSet=atlas-blamiy-shard-0&authSource=admin&appName=Cluster0"
 
 client = MongoClient(mongodb_uri, tlsAllowInvalidCertificates=True, serverSelectionTimeoutMS=5000)
 db = client.dbvania
